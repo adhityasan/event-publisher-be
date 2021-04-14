@@ -10,10 +10,7 @@
     "entity": "user",
     "service": "users",
     "secret": "fkATC02CsftdS3QEYkQ2mrxFurQ=",
-    "authStrategies": [
-      "jwt",
-      "local"
-    ],
+    "authStrategies": ["jwt", "local"],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -33,13 +30,9 @@
         "key": "<auth0 oauth key>",
         "secret": "<auth0 oauth secret>",
         "subdomain": "<auth0 subdomain>",
-        "scope": [
-          "profile",
-          "openid",
-          "email"
-        ]
+        "scope": ["profile", "openid", "email"]
       }
     }
   },
-  "mongodb": "event_publisher"
+  "mongodb": "MONGODB"
 }
