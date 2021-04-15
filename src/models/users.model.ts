@@ -8,17 +8,23 @@ import { Model, Mongoose } from 'mongoose';
 export default function (app: Application): Model<any> {
   const modelName = 'users';
   const mongooseClient: Mongoose = app.get('mongooseClient');
-  const schema = new mongooseClient.Schema({
-  
-    email: { type: String, unique: true, lowercase: true },
-    password: { type: String },
-  
-  
-    auth0Id: { type: String },
-  
-  }, {
-    timestamps: true
-  });
+  const schema = new mongooseClient.Schema(
+    {
+      email: { type: String, unique: true, lowercase: true, trim: true },
+      password: { type: String },
+      phone: { type: String, unique: true, sparse: true, trim: true },
+      name: { type: String, required: true },
+      profilePicture: { type: String },
+      address: { type: String },
+      bio: { type: String },
+      verified: { type: Boolean, default: false },
+      verifyToken: { type: String },
+      auth0Id: { type: String }
+    },
+    {
+      timestamps: true
+    }
+  );
 
   // This is necessary to avoid model compilation errors in watch mode
   // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel
