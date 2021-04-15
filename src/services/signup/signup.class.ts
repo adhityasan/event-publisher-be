@@ -32,6 +32,8 @@ export class Signup implements Partial<ServiceMethods<Data>> {
 
     this.app.service('users').patch(newUser._id, { verifyToken });
 
+    await this.app.service('email-verification').sendLinkVerification(tokenPayload, verifyToken);
+
     return data;
   }
 }
