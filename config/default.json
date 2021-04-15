@@ -6,6 +6,7 @@
     "default": 10,
     "max": 50
   },
+  "client": "CLIENT_URL",
   "authentication": {
     "entity": "user",
     "service": "users",
@@ -33,6 +34,11 @@
         "scope": ["profile", "openid", "email"]
       }
     }
+  },
+  "mailer": {
+    "address": "MAILER_ADDRESS",
+    "password": "MAILER_PASSWORD",
+    "active": "MAILER_STATUS"
   },
   "mongodb": "MONGODB"
 }
