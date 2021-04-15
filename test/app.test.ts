@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import assert from 'assert';
 import { Server } from 'http';
 import url from 'url';
@@ -6,22 +7,23 @@ import axios from 'axios';
 import app from '../src/app';
 
 const port = app.get('port') || 8998;
-const getUrl = (pathname?: string): string => url.format({
-  hostname: app.get('host') || 'localhost',
-  protocol: 'http',
-  port,
-  pathname
-});
+const getUrl = (pathname?: string): string =>
+  url.format({
+    hostname: app.get('host') || 'localhost',
+    protocol: 'http',
+    port,
+    pathname
+  });
 
 describe('Feathers application tests (with jest)', () => {
   let server: Server;
 
-  beforeAll(done => {
+  beforeAll((done) => {
     server = app.listen(port);
     server.once('listening', () => done());
   });
 
-  afterAll(done => {
+  afterAll((done) => {
     server.close(done);
   });
 
@@ -40,7 +42,7 @@ describe('Feathers application tests (with jest)', () => {
       try {
         await axios.get(getUrl('path/to/nowhere'), {
           headers: {
-            'Accept': 'text/html'
+            Accept: 'text/html'
           }
         });
       } catch (error) {
@@ -53,7 +55,7 @@ describe('Feathers application tests (with jest)', () => {
 
     it('shows a 404 JSON error without stack trace', async () => {
       expect.assertions(4);
-      
+
       try {
         await axios.get(getUrl('path/to/nowhere'));
       } catch (error) {
