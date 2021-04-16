@@ -3,7 +3,7 @@
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 import { Application } from '../declarations';
-import { Model, Mongoose } from 'mongoose';
+import { Model, Mongoose, SchemaTypes } from 'mongoose';
 
 export default function (app: Application): Model<any> {
   const modelName = 'users';
@@ -19,7 +19,8 @@ export default function (app: Application): Model<any> {
       bio: { type: String },
       verified: { type: Boolean, default: false },
       verifyToken: { type: String },
-      auth0Id: { type: String }
+      auth0Id: { type: String },
+      interest: [{ type: SchemaTypes.ObjectId, ref: 'event_categories' }]
     },
     {
       timestamps: true
