@@ -1,6 +1,7 @@
 import * as feathersAuthentication from '@feathersjs/authentication';
 import * as local from '@feathersjs/authentication-local';
 import commons from 'feathers-hooks-common';
+import populateInterests from '../../hooks/populate-interests';
 const search = require('feathers-mongodb-fuzzy-search');
 // Don't remove this comment. It's needed to format import lines nicely.
 
@@ -30,24 +31,7 @@ export default {
       protect('password', 'verifyToken')
     ],
     find: [],
-    get: [
-      commons.populate({
-        schema: {
-          include: [
-            {
-              service: 'master/event-categories',
-              nameAs: 'interest',
-              parentField: 'interest',
-              childField: '_id',
-              query: {
-                $select: ['_id', 'category']
-              },
-              asArray: true
-            }
-          ]
-        }
-      })
-    ],
+    get: [populateInterests()],
     create: [],
     update: [],
     patch: [],
