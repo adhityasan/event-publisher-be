@@ -1,5 +1,6 @@
 import * as authentication from '@feathersjs/authentication';
 import * as local from '@feathersjs/authentication-local';
+import populateInterests from '../../hooks/populate-interests';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { protect } = local.hooks;
@@ -21,7 +22,7 @@ export default {
     all: [protect('password', 'verifyToken')],
     find: [],
     get: [],
-    create: [],
+    create: [populateInterests()],
     update: [],
     patch: [],
     remove: []
