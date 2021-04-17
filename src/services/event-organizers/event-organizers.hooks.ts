@@ -23,10 +23,13 @@ export default {
 
   after: {
     all: [],
-    find: [],
+    find: [
+      populateUsers({ nameAs: 'creator', parentField: 'creator', asArray: false, $select: ['_id', 'name', 'email'] }),
+      populateUsers({ nameAs: 'committee', parentField: 'committee', asArray: true, $select: ['_id', 'name', 'email'] })
+    ],
     get: [
-      populateUsers({ nameAs: 'creator', parentField: 'creator', asArray: false }),
-      populateUsers({ nameAs: 'committee', parentField: 'committee', asArray: true })
+      populateUsers({ nameAs: 'creator', parentField: 'creator', asArray: false, $select: ['_id', 'name', 'email'] }),
+      populateUsers({ nameAs: 'committee', parentField: 'committee', asArray: true, $select: ['_id', 'name', 'email'] })
     ],
     create: [],
     update: [],

@@ -11,7 +11,7 @@ interface IPopulateUsersParams {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default ({ nameAs, parentField, $select = [] }: IPopulateUsersParams, asArray = true): Hook => {
+export default ({ nameAs, parentField, $select = [], asArray = true }: IPopulateUsersParams): Hook => {
   return commons.populate({
     schema: {
       include: [
