@@ -18,6 +18,7 @@ export default function (app: Application): Model<any> {
       },
       committee: [{ type: SchemaTypes.ObjectId, ref: 'users' }],
       description: { type: String },
+      content: { type: String },
       contact: {
         email: { type: String },
         phone: { type: String }
