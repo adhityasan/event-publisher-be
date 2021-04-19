@@ -15,7 +15,7 @@ export default function (app: Application): Model<any> {
       subtitle: { type: String },
       description: { type: String, required: true },
       bannerUrl: { type: String },
-      location: { type: String, required: true },
+      location: { type: String },
       geolocation: {
         type: {
           type: String,

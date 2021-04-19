@@ -28,7 +28,6 @@ export default function (app: Application): void {
     '/uploads',
     multipartMiddleware.single('file'),
     function (req: MulterRequest, _, next) {
-      console.log(req);
       if (req?.feathers) {
         req.feathers.file = req?.file ? req?.file : null;
       }
