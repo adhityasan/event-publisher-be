@@ -12,7 +12,8 @@ export class Events extends Service {
     if (params?.query?.geometry) {
       const results = await this.Model.find(
         {
-          geolocation: params?.query?.parseGeolocation ? JSON.parse(params?.query?.geolocation) : params?.query?.geolocation
+          geolocation: params?.query?.parseGeolocation ? JSON.parse(params?.query?.geolocation) : params?.query?.geolocation,
+          isPublished: params.query.isPublished || true
         },
         async (error: any, res: any) => {
           if (error) {
