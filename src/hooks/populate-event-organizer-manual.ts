@@ -14,7 +14,7 @@ export default (options = {}): Hook => {
 
       const nextCtx = await Promise.all(norg);
 
-      context.result = { nextCtx };
+      context.result = nextCtx;
       return context;
     }
 
