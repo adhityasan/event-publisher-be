@@ -16,8 +16,7 @@ export default function (app: Application): void {
   const options = {
     Model: createModel(app),
     paginate: app.get('paginate'),
-    whitelist: ['$text', '$search', '$and', '$regex', '$near', '$maxDistance', '$geometry'],
-    useEstimatedDocumentCount: true
+    whitelist: ['$text', '$search']
   };
 
   // Initialize our service with any options it requires
