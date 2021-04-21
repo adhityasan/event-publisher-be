@@ -7,6 +7,7 @@ import eventFormats from './master/event-formats/event-formats.service';
 import interest from './interest/interest.service';
 import eventOrganizers from './event-organizers/event-organizers.service';
 import uploads from './uploads/uploads.service';
+import events from './events/events.service';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 export default function (app: Application): void {
@@ -18,4 +19,5 @@ export default function (app: Application): void {
   app.configure(interest);
   app.configure(eventOrganizers);
   app.configure(uploads);
+  app.configure(events);
 }
