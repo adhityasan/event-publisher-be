@@ -22,13 +22,6 @@ export class InviteCommittee extends Service {
     this.app = app;
   }
 
-  async find(params: Params): Promise<any> {
-    const query = { ...params.query, to: params?.user?._id };
-    params.query = query;
-
-    return this._find(params);
-  }
-
   async create(data: Partial<InviteData>, params?: Params | undefined): Promise<any> {
     if (!data.organizer || !data.to) {
       throw new BadRequest('organizer or invitation target should be set');

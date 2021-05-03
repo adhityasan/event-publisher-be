@@ -19,7 +19,7 @@ export default {
 
   after: {
     all: [],
-    find: [],
+    find: [populateUsers({ nameAs: 'to', parentField: 'to', asArray: false, $select: ['_id', 'name', 'email'] })],
     get: [],
     create: [
       populateUsers({ nameAs: 'from', parentField: 'from', asArray: false, $select: ['_id', 'name', 'email'] }),
