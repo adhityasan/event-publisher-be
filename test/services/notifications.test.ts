@@ -1,8 +1,8 @@
 import app from '../../src/app';
 
-describe('"event-categories" service', () => {
+describe('\'notifications\' service', () => {
   it('registered the service', () => {
-    const service = app.service('master/event-categories');
+    const service = app.service('notifications');
     expect(service).toBeTruthy();
   });
 });
