@@ -8,6 +8,8 @@ import interest from './interest/interest.service';
 import eventOrganizers from './event-organizers/event-organizers.service';
 import uploads from './uploads/uploads.service';
 import events from './events/events.service';
+import actionInviteCommittee from './action/invite-committee/invite-committee.service';
+import notifications from './notifications/notifications.service';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 export default function (app: Application): void {
@@ -20,4 +22,6 @@ export default function (app: Application): void {
   app.configure(eventOrganizers);
   app.configure(uploads);
   app.configure(events);
+  app.configure(actionInviteCommittee);
+  app.configure(notifications);
 }
