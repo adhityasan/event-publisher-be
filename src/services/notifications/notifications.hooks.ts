@@ -17,8 +17,8 @@ export default {
 
   after: {
     all: [],
-    find: [],
-    get: [],
+    find: [populateUsers({ nameAs: 'from', parentField: 'from', asArray: false, $select: ['_id', 'name', 'email'] })],
+    get: [populateUsers({ nameAs: 'from', parentField: 'from', asArray: false, $select: ['_id', 'name', 'email'] })],
     create: [populateUsers({ nameAs: 'from', parentField: 'from', asArray: false, $select: ['_id', 'name', 'email'] })],
     update: [],
     patch: [],
