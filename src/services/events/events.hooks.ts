@@ -12,7 +12,11 @@ const { authenticate } = authentication.hooks;
 export default {
   before: {
     all: [],
-    find: [search()],
+    find: [
+      search({
+        fields: ['title', 'subtitle']
+      })
+    ],
     get: [],
     create: [authenticate('jwt'), setField({ as: 'data.creator', from: 'params.user._id' })],
     update: [authenticate('jwt')],
