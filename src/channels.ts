@@ -32,6 +32,19 @@ export default function (app: Application): void {
         return app.channel(`userId/${data?.to}`);
       });
 
+      // channel user interest
+      if (connection?.user?.interest && connection.user.interest.length > 0) {
+        [...connection.user.interest].forEach((interest) => {
+          app.channel(`eventRecommendation/${interest._id}`).join(connection);
+        });
+        app.service('events').publish('created', (data: any) => {
+          const recommendationChannels = data.eventCategories.map((category: any) =>
+            app.channel(`eventRecommendation/${category}`)
+          );
+          return recommendationChannels;
+        });
+      }
+
       // Channels can be named anything and joined on any condition
 
       // E.g. to send real-time events only to admins use
